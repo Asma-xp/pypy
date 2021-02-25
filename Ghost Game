@@ -1,0 +1,68 @@
+
+import tkinter as tk
+from random import randint 
+import PySimpleGUI as sg
+
+#window GUI
+
+
+sg.theme('DarkAmber')
+
+
+#layout
+layout = [  [sg.Text("What's your name?")],     
+            [sg.Input()],
+            [sg.Button('Ok')],
+            [sg.Text('Do you want to play?'), sg.Button('Play', button_color=('white', 'green'))],[] ]
+
+window = sg.Window('The Ghost Game', layout)   
+
+event, values = window.read() 
+
+
+#display
+#esg.Window(title="The Ghost Game :))",layout=[[]], margins=(150, 150)).read()
+
+
+#game set up
+feeling_brave=True
+score=0
+
+#Buttons
+
+#root = tk.Tk()
+#frame = tk.Frame(root)
+#frame.pack()
+
+#button = tk.Button(frame, 
+ #                  text="QUIT", 
+ #                  fg="red",
+ #                  command=quit)
+#button.pack(side=tk.LEFT)
+
+#def play():
+  #  print("Welcome to the Ghost Game!")
+
+#slogan = tk.Button(frame,
+ #                  text="Play",
+ #                  command=play)
+#slogan.pack(side=tk.LEFT)
+#root.mainloop()
+
+#     #Ghost Game
+while feeling_brave:
+    ghost_door = randint(1, 3)
+    print('Three doors ahead')
+    print('A ghost behind one.')
+    print('Which door do you open?')
+    door = input('1, 2, or 3?')
+    door_num = int(door)
+    if door_num == ghost_door:
+        print('GHOST!')
+        feeling_brave = False
+    else:
+        print('No ghost!')
+        print('You enter the next room.')
+        score = score + 1
+print('Run Away!')
+print('Game over! You scored', score)
